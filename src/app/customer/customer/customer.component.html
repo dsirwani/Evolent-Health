@@ -1,0 +1,30 @@
+<h3>List of customers</h3>
+<div>
+    <button (click) = "showAddCustComponent()" class = "btn btn-primary">Add Customer</button>
+</div>
+<div>
+    <table class = "table table-hover">
+        <tr>
+            <th>Customer Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Status(Active / InActive)</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr *ngFor = "let customer of customers">
+            <td>{{customer.customerId}}</td>
+            <td>{{customer.firstName}}</td>
+            <td>{{customer.lastName}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{customer.phoneNumber}}</td>
+            <td>{{customer.status ? "Active" : "Inactive"}}</td>
+            <td><a href = "#" (click) = "updateCustomerData(customer.customerId)"><span class="glyphicon glyphicon-edit"></span></a></td>
+            <td><a href = "#" (click) = "deleteCustomer(customer.customerId)"><span class="glyphicon glyphicon-trash"></span></a></td>
+
+        </tr>
+    </table>
+</div>      
+ <evo-hlth-add-customer *ngIf="addNewCustomer"  [customers] = "customers"></evo-hlth-add-customer>

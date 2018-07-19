@@ -1,0 +1,81 @@
+<div>
+	<h3>Record Customer Details</h3>
+	<form [formGroup] = "customerData" (ngSubmit) = "addCustomer()" novalidate class = "col-sm-6 col-md-6">
+		<div class="form-group">
+			<label for="customerId">Customer Id : {{ nextId }} </label>
+			
+		</div>
+		<div class="form-group">
+			<label for="firstName">First Name: </label>
+			<input type="text" name="firstName" class="form-control" formControlName="firstName"/>
+			
+			<div *ngIf=" !customerData.controls.firstName?.valid && ( customerData.controls.firstName?.dirty || customerData.controls.firstName ?.touched )" class="alert alert-danger">
+			    <div [hidden]="!customerData.controls.firstName.errors.required">
+			        First Name is required
+			    </div>
+			    
+				<div [hidden]="!customerData.controls.firstName.errors.minlength">
+				    First Name Minimum Length is {{ customerData.controls.firstName.errors.minlength?.requiredLength }}
+				</div>
+
+				<div [hidden]="!customerData.controls.firstName.errors.pattern">
+				    First Name not Valid.
+				</div>
+
+			</div>
+
+		</div>
+		<div class="form-group">
+			<label for="lastName">Last Name : </label>
+			<input type="text" name="lastName" class="form-control" formControlName="lastName"/>
+			<div *ngIf=" !customerData.controls.lastName?.valid && ( customerData.controls.lastName?.dirty || customerData.controls.lastName ?.touched )" class="alert alert-danger">
+			    <div [hidden]="!customerData.controls.lastName.errors.required">
+			        Last Name is required
+			    </div>
+			    
+				<div [hidden]="!customerData.controls.lastName.errors.minlength">
+				    Last Name Minimum Length is {{ customerData.controls.lastName.errors.minlength?.requiredLength }}
+				</div>
+
+				<div [hidden]="!customerData.controls.lastName.errors.pattern">
+				    Last Name not Valid.
+				</div>
+
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="email">Email: </label>
+			<input type="text" name="email" class="form-control" formControlName="email"/>
+			<div *ngIf=" !customerData.controls.email?.valid && ( customerData.controls.email?.dirty || customerData.controls.email ?.touched )" class="alert alert-danger">
+			    <div [hidden]="!customerData.controls.email.errors.required">
+			        Email is required
+			    </div>
+				
+				<div [hidden]="!customerData.controls.email.errors.pattern">
+				    Invalid Email address.
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="phoneNumber">Phone Number : </label>
+			<input type="text" name="phoneNumber" class="form-control" formControlName="phoneNumber"/>
+			<div *ngIf=" !customerData.controls.phoneNumber?.valid && ( customerData.controls.phoneNumber?.dirty || customerData.controls.phoneNumber ?.touched )" class="alert alert-danger">
+			    <div [hidden]="!customerData.controls.phoneNumber.errors.required">
+			        Phone number is required
+			    </div>
+				
+				<div [hidden]="!customerData.controls.phoneNumber.errors.pattern">
+				    Invalid Phone number.
+				</div>
+			</div>
+		</div>
+		<div class="form-group checkbox">
+			<label for="checkbox">Status : </label>
+			<input type="checkbox" name="status" class="checkbox-margin" value="Active" formControlName="status"/>
+		</div>
+		<div class="form-group">
+			<button type="Submit" [disabled] = "!customerData.valid">Submit</button>
+		</div>
+		
+	</form>
+</div>
